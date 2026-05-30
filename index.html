@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>豪士早餐人格测试</title>
+    <meta
+      name="description"
+      content="用 20 道量表题测出你的豪士早餐人格，生成可分享的人格结果卡。"
+    />
+    <link rel="preload" as="image" href="assets/breakfast-hero.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero" id="top">
+      <div class="hero__image" aria-hidden="true"></div>
+      <div class="hero__overlay"></div>
+      <nav class="topbar" aria-label="页面导航">
+        <a class="brand" href="#top" aria-label="回到顶部">
+          <span class="brand__mark">H</span>
+          <span>豪士早餐人格局</span>
+        </a>
+        <a class="topbar__link" href="#quiz">开始测试</a>
+      </nav>
+      <div class="hero__content">
+        <p class="eyebrow">HAOSHI BREAKFAST TYPE</p>
+        <h1>测测你的豪士早餐人格</h1>
+        <p class="hero__copy">
+          20 道晨间选择题，用类似 MBTI 的 7 档量表，生成你的早餐人格卡和专属早餐搭配。
+        </p>
+        <div class="hero__actions">
+          <a class="button button--primary" href="#quiz">立即开始</a>
+          <button class="button button--ghost" type="button" id="randomDemo">
+            随机体验
+          </button>
+        </div>
+        <dl class="hero__stats" aria-label="测试信息">
+          <div>
+            <dt>题目</dt>
+            <dd>20</dd>
+          </div>
+          <div>
+            <dt>维度</dt>
+            <dd>4</dd>
+          </div>
+          <div>
+            <dt>人格</dt>
+            <dd>16</dd>
+          </div>
+        </dl>
+      </div>
+    </header>
+
+    <main>
+      <section class="quiz-shell" id="quiz" aria-labelledby="quizTitle">
+        <div class="section-heading">
+          <p class="eyebrow">LIKERT SCALE</p>
+          <h2 id="quizTitle">选择你对每句话的真实感受</h2>
+          <p>
+            左侧代表同意，右侧代表不同意。圆点越大，态度越强；中间灰点代表不确定或无明显倾向。
+          </p>
+        </div>
+
+        <div class="progress-panel" aria-live="polite">
+          <div class="progress-panel__row">
+            <span id="progressText">已完成 0 / 20</span>
+            <span id="progressHint">完成全部题目后解锁结果</span>
+          </div>
+          <div class="progress-track" aria-hidden="true">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+        </div>
+
+        <form class="question-list" id="quizForm">
+          <div id="questionList"></div>
+          <div class="submit-panel">
+            <p id="submitTip">还有题目没选完，先别急着交卷。</p>
+            <button class="button button--primary" type="submit" id="submitButton" disabled>
+              生成我的人格卡
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section class="result-section" id="result" aria-labelledby="resultTitle" hidden>
+        <div class="result-card" id="resultCard">
+          <div class="result-card__header">
+            <p class="eyebrow">YOUR BREAKFAST TYPE</p>
+            <p class="result-code" id="resultCode">FTBC</p>
+          </div>
+          <h2 id="resultTitle">通勤续命战士</h2>
+          <p class="result-subtitle" id="resultSubtitle">
+            快速、甜口、顶饱、经典，早八路上的能量补给派。
+          </p>
+          <div class="tag-row" id="resultTags"></div>
+          <div class="result-grid">
+            <div>
+              <h3>人格解读</h3>
+              <p id="resultDescription"></p>
+            </div>
+            <div>
+              <h3>豪士早餐推荐</h3>
+              <p id="resultProduct"></p>
+            </div>
+          </div>
+          <div class="pairing">
+            <span>今日幸运搭配</span>
+            <strong id="resultPairing"></strong>
+          </div>
+          <div class="score-board" id="scoreBoard" aria-label="维度得分"></div>
+        </div>
+
+        <div class="result-actions">
+          <button class="button button--primary" type="button" id="copyResult">
+            复制分享文案
+          </button>
+          <button class="button button--ghost" type="button" id="restartQuiz">
+            重新测试
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      <p>静态 H5 版本，可直接部署到活动页、公众号菜单或小程序 WebView。</p>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
